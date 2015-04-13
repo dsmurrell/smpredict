@@ -1,0 +1,38 @@
+Loading required package: lattice
+Loading required package: reshape
+Loading required package: plyr
+
+Attaching package: 'reshape'
+
+The following object(s) are masked from 'package:plyr':
+
+    rename, round_any
+
+Loading required package: stats
+Loading required package: cluster
+Loading required package: graphics
+Loading required package: utils
+Loading required package: foreach
+Loading required package: methods
+Daniel Sebastian Murrell's needed functions
+
+Attaching package: 'dsmR'
+
+The following object(s) are masked from 'package:caret':
+
+    RMSE
+
+During startup - Warning messages:
+1: package 'caret' was built under R version 2.15.1 
+2: package 'lattice' was built under R version 2.15.1 
+3: package 'cluster' was built under R version 2.15.1 
+4: package 'foreach' was built under R version 2.15.1 
+5: package 'ggplot2' was built under R version 2.15.1 
+Loading required package: rJava
+Loading required package: kernlab
+Loading required package: impute
+Loading smPredict (small molecule property prediction package)
+written by Daniel Murrell (dsmurrell@gmail.com)
+For a complete list of package functions, use ls("package:smPredict")
+Warning message:
+replacing previous import 'show' when loading 'rJava' 

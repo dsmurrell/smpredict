@@ -1,0 +1,3 @@
+smpredict/src/build/
+smpredict/src/*.so
+smpredict/src/*.o

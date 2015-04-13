@@ -1,0 +1,14 @@
+Package: smpredict
+Type: Package
+Title: Collection of models to predict various important properties of drug-like molecules
+Version: 1.0
+Date: 2013-02-06
+Author: Daniel Murrell <dsmurrell@gmail.com>
+Maintainer: Daniel Murrell <dsmurrell@gmail.com>
+Depends: R (>= 2.12.0), rJava, caret, kernlab, impute, gbm 
+Description: Includes smlogp for the prediction of logP. More property prediction tools will follow.
+NeedsCompile: Yes
+License: GPL
+URL: http://smlogp.smpredict.com
+LazyLoad: yes
+

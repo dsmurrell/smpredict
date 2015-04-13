@@ -1,0 +1,48 @@
+[1] "reading SMILES (R)"
+Processing B000088 in standardised9967bcc0fb4.sdf (1/10). 
+Processing B000139 in standardised9967bcc0fb4.sdf (2/10). 
+Processing B000236 in standardised9967bcc0fb4.sdf (3/10). Average speed: 1.02 s/mol.
+Processing B000310 in standardised9967bcc0fb4.sdf (4/10). Average speed: 2.07 s/mol.
+Processing B000728 in standardised9967bcc0fb4.sdf (5/10). Average speed: 1.53 s/mol.
+Processing B000785 in standardised9967bcc0fb4.sdf (6/10). Average speed: 1.25 s/mol.
+Processing B000821 in standardised9967bcc0fb4.sdf (7/10). Average speed: 1.08 s/mol.
+Processing B000826 in standardised9967bcc0fb4.sdf (8/10). Average speed: 0.94 s/mol.
+Processing B001153 in standardised9967bcc0fb4.sdf (9/10). Average speed: 0.91 s/mol.
+Processing B001156 in standardised9967bcc0fb4.sdf (10/10). Average speed: 0.82 s/mol.
+Descriptor calculation completed in 6.679 secs . Average speed: 0.67 s/mol.
+Cluster size 12111 broken into 9051 3060 
+Cluster size 9051 broken into 1933 7118 
+Cluster size 1933 broken into 890 1043 
+Done cluster 890 
+Done cluster 1043 
+Done cluster 1933 
+Cluster size 7118 broken into 4918 2200 
+Cluster size 4918 broken into 2282 2636 
+Cluster size 2282 broken into 958 1324 
+Done cluster 958 
+Done cluster 1324 
+Done cluster 2282 
+Cluster size 2636 broken into 1432 1204 
+Done cluster 1432 
+Done cluster 1204 
+Done cluster 2636 
+Done cluster 4918 
+Cluster size 2200 broken into 676 1524 
+Done cluster 676 
+Cluster size 1524 broken into 318 1206 
+Done cluster 318 
+Done cluster 1206 
+Done cluster 1524 
+Done cluster 2200 
+Done cluster 7118 
+Done cluster 9051 
+Cluster size 3060 broken into 5 3055 
+Done cluster 5 
+Cluster size 3055 broken into 716 2339 
+Done cluster 716 
+Cluster size 2339 broken into 1010 1329 
+Done cluster 1010 
+Done cluster 1329 
+Done cluster 2339 
+Done cluster 3055 
+Done cluster 3060 
