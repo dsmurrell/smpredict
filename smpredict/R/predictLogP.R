@@ -36,6 +36,7 @@ PredictLogPFromDescriptors <- function(descriptors, error.variance=FALSE, error.
   gbm_pred <- predict(gbm$finalModel, newdata = x, n.trees = 500)
   greedy_pred <- svm_pred*0.712 + gbm_pred*0.288
   r <- data.frame(ID = names, smLogP = greedy_pred)
+  r$smLogP <- format(round(r$smLogP, 2), nsmall = 2)
   if(error.variance) {
     library(eve)
     estimator <- readRDS(system.file("extdata", "logPeve.rds", package="smpredict"))
