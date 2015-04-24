@@ -26,6 +26,7 @@ PredictLogPFromDescriptors <- function(descriptors, error.variance=FALSE, error.
   descriptors <- descriptors[, used.descriptors]
   suppressWarnings(descriptors <- apply(descriptors, 2, as.numeric))
   nrows <- nrow(descriptors)
+  if(is.null(nrows)) { nrows <- 1 }
   to.impute <- rbind(descriptors, x.train)
   to.impute <- ReplaceInfinitesWithNA(to.impute)
   set.seed(777)
@@ -34,34 +35,15 @@ PredictLogPFromDescriptors <- function(descriptors, error.variance=FALSE, error.
   x <- predict(transformation, to.predict)
   svm_pred <- predict(svm$finalModel, newdata = x)
   gbm_pred <- predict(gbm$finalModel, newdata = x, n.trees = 500)
-  greedy_pred <- svm_pred*0.712 + gbm_pred*0.288
+  greedy_pred <-  gbm_pred*0.288 + svm_pred*0.712
   r <- data.frame(ID = names, smLogP = greedy_pred)
   r$smLogP <- format(round(r$smLogP, 2), nsmall = 2)
   if(error.variance) {
     library(eve)
-    estimator <- readRDS(system.file("extdata", "logPeve.rds", package="smpredict"))
-    sigmas <- PredictSigmasMC(x=x, estimator=estimator, cores=error.cores)
-    r$error_variance <- format(round(sigmas, 3), nsmall = 3)
+    #estimator <- readRDS(system.file("extdata", "logPeve.rds", package="smpredict"))
+    #sigmas <- PredictSigmasMC(x=x, estimator=estimator, cores=error.cores)
+    #r$error_variance <- format(round(sigmas, 3), nsmall = 3)
   }
-  #if(error.variance) {
-  #  n <- 5
-  #  p <- 1.5
-  #  load(file = system.file("extdata", "spline.rda", package="smpredict"))
-  #  load(file = system.file("extdata", "as.rda", package="smpredict"))
-  #  outset <- to.predict
-  #  for(i in 1:length(as)) {
-  #    outset[,i] <- outset[,i] * (as[i]^p)
-  #  }
-  #  inset <- x.train
-  #  for(i in 1:length(as)) {
-  #    inset[,i] <- inset[,i] * (as[i]^p)
-  #  }
-  #  distances <- findMinDistances(outset, inset, n)
-  #  sf <- 15/mean(distances)
-  #  distances <- distances*sf
-  #  variances <- predict(spline, distances)$y
-  #  r$variance <- variances
-  #}
   r
 }
 
