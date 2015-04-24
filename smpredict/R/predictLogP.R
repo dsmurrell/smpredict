@@ -1,17 +1,3 @@
-#findMinDistances <- function(set, referenceSet, numberOfNeighbours) {
-#  n <- numberOfNeighbours
-#  x <- as.matrix(referenceSet)
-#  minDistances <- c()
-#  for(i in 1:nrow(set)) {
-#    y <- as.vector(set[i,], mode="numeric")
-#    y[is.na(y)] <- 0
-#    distances <- colSums((t(x)-y)^2) 
-#    minDistances <- c(minDistances, sum(sort(sqrt(distances),partial=n)[1:n])/n)
-#  }
-#  minDistances[is.na(minDistances)] <- 0
-#  minDistances
-#}
-
 ReplaceInfinitesWithNA <- function(d) {
   do.call(data.frame,lapply(d, function(x) replace(x, is.infinite(x), NA)))
 }
@@ -58,11 +44,12 @@ PredictLogPFromDescriptors <- function(descriptors, error.variance=FALSE, error.
   set.seed(777)
   imputed <- as.data.frame(impute.knn(as.matrix(to.impute), k = 10)$data)
   to.predict <- imputed[1:nrows, ]
+  to.predict <- rbind(to.predict[1,], to.predict) # HACK
   x <- predict(transformation, to.predict)
   svm_pred <- predict(svm$finalModel, newdata = x)
   gbm_pred <- predict(gbm$finalModel, newdata = x, n.trees = 500)
   greedy_pred <-  gbm_pred*0.288 + svm_pred*0.712
-  r <- data.frame(ID = names, smLogP = greedy_pred)
+  r <- data.frame(ID = names, smLogP = greedy_pred[2:length(greedy_pred)]) # HACK
   r$smLogP <- format(round(r$smLogP, 2), nsmall = 2)
   if(error.variance) {
     library(eve)
@@ -92,13 +79,14 @@ PredictLogSFromDescriptors <- function(descriptors, error.variance=FALSE, error.
   set.seed(777)
   imputed <- as.data.frame(impute.knn(as.matrix(to.impute), k = 10)$data)
   to.predict <- imputed[1:nrows, ]
+  to.predict <- rbind(to.predict[1,], to.predict) # HACK
   x <- predict(transformation, to.predict)
   svmRadial_pred <- predict(svmRadial$finalModel, newdata = x)
   gbm_pred <- predict(gbm$finalModel, newdata = x, n.trees = 500)
   library(Cubist)
   cubist_pred <- predict(cubist$finalModel, newdata = x)
   greedy_pred <-  gbm_pred*0.285 + svmRadial_pred*0.318 + cubist_pred*0.354
-  r <- data.frame(ID = names, smLogS = greedy_pred)
+  r <- data.frame(ID = names, smLogS = greedy_pred[2:length(greedy_pred)])
   r$smLogS <- format(round(r$smLogS, 2), nsmall = 2)
   #if(error.variance) {
   #  library(eve)
