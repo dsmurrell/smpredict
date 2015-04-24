@@ -28,7 +28,7 @@ PredictProperty <- function(property = c('LogP', 'LogS'), structures.file, error
   descriptors.file <- tempfile("descriptors", fileext=".csv")
   StandardiseMolecules(structures.file, standardised.file, name.file = name.file, limit = -1)
   GenerateDescriptors.internal(standardised.file, descriptors.file, name.file, threads)
-  PredictLogPFromDescriptorsFile(property, descriptors.file, error.variance)
+  PredictPropertyFromDescriptorsFile(property, descriptors.file, error.variance)
 }
 
 PredictPropertyFromDescriptorsFile <- function(property = c('LogP', 'LogS'), descriptors.file, error.variance=FALSE) {
