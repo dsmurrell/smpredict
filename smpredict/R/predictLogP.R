@@ -55,7 +55,7 @@ PredictLogPFromDescriptors <- function(descriptors, error.variance=FALSE, error.
     library(eve)
     estimator <- readRDS(system.file("extdata", "logp_eve.rds", package="smpredict"))
     sigmas <- PredictSigmasMC(x=x, estimator=estimator, cores=error.cores)
-    r$error_variance <- format(round(sigmas, 3), nsmall = 3)
+    r$error_variance <- format(round(sigmas[2:length(sigmas)], 3), nsmall = 3) # HACK
   }
   r
 }
